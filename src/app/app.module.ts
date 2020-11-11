@@ -2,7 +2,7 @@ import { CandidatesService } from './services/candidates.service';
 import { SearchComponent } from './components/search/search.component';
 
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserProfileService } from './services/user-profile.service';
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -61,7 +61,9 @@ import { EditModalComponent } from './edit-modal/edit-modal.component';
     MatExpansionModule,MatMenuModule,
     MatListModule,FormsModule, MatGridListModule, MatCardModule,AppRoutes, UserModule,
     ChartsModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule,
+    FormsModule
     // ,ChartType,Label,MultiDataSet
   ],
   providers: [UserProfileService,CandidatesService],

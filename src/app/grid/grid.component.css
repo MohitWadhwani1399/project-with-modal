@@ -30,7 +30,11 @@
 input{
     width: 90px;
     /* border-color:edf1f7;
-    border-radius: 0.3rem; */
+    border-rad
+    ius: 0.3rem; */
+}
+input.form-control{
+    width:90%
 }
 thead{
     position: relative;

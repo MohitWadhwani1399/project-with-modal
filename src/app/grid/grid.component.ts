@@ -1,4 +1,6 @@
 import { Component,  OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { NgbModal,NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 //import { UserProfileService } from '../user-profile.service';
 import { UserProfileService } from '../services/user-profile.service';
 
@@ -9,7 +11,7 @@ import { UserProfileService } from '../services/user-profile.service';
 })
 export class GridComponent implements OnInit {
  
-
+  index;
   InputUser=false;
   ndf=false;
   showasinput = {
@@ -21,12 +23,32 @@ export class GridComponent implements OnInit {
     flag:true
   };
   userInfo = [];
-  tempuser =[]
-  constructor(private userService:UserProfileService){}
+  tempuser =[];
+  tuser:any;
+  modalOptions:NgbModalOptions;
+  editProfileForm: FormGroup;
+  constructor(private modalService: NgbModal,private userService:UserProfileService){}
 
   ngOnInit(): void {
+    this.modalOptions = {
+      backdrop:'static',
+      backdropClass:'customBackdrop'
+    }
+    // this.editProfileForm = this.fb.group({
+    //   firstname: [''],
+    //   lastname: [''],
+    //   username: [''],
+    //   email: ['']
+    //  });
     this.userInfo = this.userService.provideUser(); 
     this.tempuser = this.userInfo;
+  }
+  openModal(content,user,i) {
+    this.tuser = user
+    this.index = i
+    //console.log("Open Model",user,i);  
+    const modalRef = this.modalService.open(content,{centered:true});
+    //modalRef.componentInstance.name = 'World';
   }
   Showadduserinput(event){
     this.InputUser = true;
@@ -107,11 +129,16 @@ export class GridComponent implements OnInit {
       this.userInfo = user;
     }
   }
-  edituser(Id){
-    this.showasinput.id = Id;
-     this.showasinput.flag = true;
-     this.toggle_on_edit.flag = false;
-     
+  edituser(user){
+    console.log(user);
+    this.userInfo.forEach(User=>{
+      if(User.Id==user.Id){
+        let index = this.userInfo.indexOf(User)
+        this.userInfo[index] = user
+      }
+    })
+    console.log(this.userInfo);
+    this.modalService.dismissAll()
   }
   toggleshowasinput(){
     this.showasinput.flag = !this.showasinput.flag
