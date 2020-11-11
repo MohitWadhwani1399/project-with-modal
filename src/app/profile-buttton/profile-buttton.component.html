@@ -1,0 +1,21 @@
+
+  <div class="dropdown">
+    <button type="button" id="profile" class="btn btn-transparent dropdown-toggle" [matMenuTriggerFor]="menu" >
+      <img src={{profileData.image}} class="avatar rounded-circle" alt="Cinque Terre">
+      {{profileData.name}}
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>dialpad</mat-icon>
+        <span>Contact Us</span>
+      </button>
+      <button mat-menu-item >
+        <mat-icon>voicemail</mat-icon>
+        <span>FAQs</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>notifications_off</mat-icon>
+        <span>Disable alerts</span>
+      </button>
+    </mat-menu>
+  </div>

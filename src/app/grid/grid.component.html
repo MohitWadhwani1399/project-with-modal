@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+<!-- <div class="container"> -->
+	<div class="row">
+        <div class="col-md-12">
+       
+        <div class="table table-responsive">  
+            <h2>TOTAL CANDIDATE LIST</h2> 
+              <table id="mytable" class="table">
+                   <thead>
+                    <th>Actions</th>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name </th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Age</th> 
+                   </thead>
+                   <tbody>
+                    <tr>
+            <td><button class="btn btn-primary btn-md showaddinput" (click)="Showadduserinput($event)">
+                <svg width="4em" height="1.5em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                </svg>
+            </button></td>
+            <td><input type="text" name="ID" placeholder="ID" #Id (keyup)="filter(Id.value,Id.name)"></td>
+            <td><input type="text" name="FirstName" placeholder="First Name" #FirstName (keyup)="filter(FirstName.value,FirstName.name)"></td>
+            <td><input type="text" name="LastName" placeholder="Last Name" #LastName (keyup)="filter(LastName.value,LastName.name)"></td>
+            <td><input type="text" name="Username" placeholder="Username" #Username (keyup)="filter(Username.value,Username.name)"></td>
+            <td><input type="text" name="Email" placeholder="Email" #email (keyup)="filter(email.value,email.name)"></td>
+            <td><input type="text" name="Age" placeholder="Age" #age (keyup)="filter(age.value,age.name)"></td>
+                    </tr>
+                    <tr *ngIf="InputUser">
+                        <td><button class="btn btn-primary btn-md adduser" (click)="SubmitUser($event,{Id:Id.value,FirstName:FirstName.value,LastName:LastName.value,Username:Username.value,email:email.value,age:age.value})">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check2" fill="currentcolor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                            </svg>
+                            </button>
+                            <button class="btn btn-primary btn-md revoke" (click)="Hideadduserinput()">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x" fill="currentcolor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                        </button></td>
+                        <td><input type="text" name="ID" placeholder="ID" #Id ></td>
+                        <td><input type="text" name="FirstName" placeholder="First Name" #FirstName></td>
+                        <td><input type="text" name="LastName" placeholder="Last Name" #LastName></td>
+                        <td><input type="text" name="Username" placeholder="Username" #Username></td>
+                        <td><input type="text" name="Email" placeholder="Email" #email></td>
+                        <td><input type="text" name="Age" placeholder="Age" #age></td>
+                        </tr>
+                    <tr *ngFor="let user of userInfo;let i=index">
+    <td>
+        <table id="insidetable" class="table">
+        <tbody>
+            <tr>
+                <td>
+        <button *ngIf="toggle_on_edit.flag || showasinput.id!=user.Id" class="btn edit" (click)="edituser(user.Id)">
+        <svg width="1.5em" height="1.2em" viewBox="0 0 16 16" class="bi bi-pen" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+        </svg>
+        </button>
+        <button *ngIf="!(toggle_on_edit.flag || showasinput.id!=user.Id)" class="btn save" (click)="saveuser()">
+            <svg width="1.5em" height="1.2em" viewBox="0 0 16 16" class="bi bi-check2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+              </svg>
+        </button>
+        </td>
+        <td>
+        <button *ngIf="toggle_on_edit.flag || showasinput.id!=user.Id" class="btn delete" (click)="deleteuser(user.Id)">
+        <svg width="1.5em" height="1.2em" viewBox="0 0 16 16" class="bi bi-trash" fill="red" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+        </svg>
+        </button>
+        <button *ngIf="!(toggle_on_edit.flag || showasinput.id!=user.Id)" class="btn cancel" (click)="toggleshowasinput()">
+            <svg width="1.5em" height="1.2em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+            </svg>
+        </button>
+        </td> 
+        </tr>
+        </tbody>
+        </table>   
+    </td>    
+    <td *ngIf="!showasinput.flag || showasinput.id!=user.Id">{{user.Id}}</td>
+    <td *ngIf="showasinput.flag && showasinput.id===user.Id"><input type="text" value="{{user.Id}}" placeholder="ID" [(ngModel)]="userInfo[i].Id"/></td>
+    <td *ngIf="!showasinput.flag || showasinput.id!=user.Id">{{user.FirstName}}</td>
+    <td *ngIf="showasinput.flag && showasinput.id===user.Id"><input type="text" value="{{user.FirstName}}" placeholder="FirstName" [(ngModel)]="userInfo[i].FirstName"/></td>
+    <td *ngIf="!showasinput.flag || showasinput.id!=user.Id" >{{user.LastName}}</td>
+    <td *ngIf="showasinput.flag && showasinput.id===user.Id"><input type="text" value="{{user.LastName}}" placeholder="LastName" [(ngModel)]="userInfo[i].LastName"/></td>
+    <td *ngIf="!showasinput.flag || showasinput.id!=user.Id" >{{user.Username}}</td>
+    <td *ngIf="showasinput.flag && showasinput.id===user.Id"><input type="text" value="{{user.Username}}" placeholder="Username" [(ngModel)]="userInfo[i].Username" /></td>
+    <td *ngIf="!showasinput.flag || showasinput.id!=user.Id" >{{user.email}}</td>
+    <td *ngIf="showasinput.flag && showasinput.id===user.Id"><input type="text" value="{{user.email}}" placeholder="Email" [(ngModel)]="userInfo[i].email"/></td>
+    <td *ngIf="!showasinput.flag || showasinput.id!=user.Id">{{user.age}}</td>
+    <td *ngIf="showasinput.flag && showasinput.id===user.Id"><input type="text" value="{{user.age}}" placeholder="Age" [(ngModel)]="userInfo[i].age"/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="7" *ngIf="ndf">No data Found</td>
+                    </tr>
+                    </tbody>
+               </table>
+
+<div class="clearfix">
+<ul class="pagination pull-right">
+  <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+  <li class="active"><a href="#">1</a></li>
+  <li><a href="#">2</a></li>
+  <li><a href="#">3</a></li>
+  <li><a href="#">4</a></li>
+  <li><a href="#">5</a></li>
+  <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+</ul>
+</div>
+        </div>   
+        </div>
+	</div>
+<!-- </div> -->
+
+</body>
+</html>

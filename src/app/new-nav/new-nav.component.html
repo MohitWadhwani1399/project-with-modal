@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Document</title>
+</head>
+
+<body>
+  
+
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <button mat-icon-button id="nav-btn" (click)="isExpanded =!isExpanded"   type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="true" aria-label="Toggle navigation">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="toolbar-spacer"></span>
+    <div class="collapse navbar-collapse" >
+      <a class="navbar-brand" href="#"><img src="../../assets/img/3.jpg"></a>
+      <span class="example-fill-remaining-space"></span>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink='/'>Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About <span class="sr-only">(current)</span></a>
+        </li>
+       
+        <li class="nav-item dropdown"  >
+          <a class="nav-link " data-toggle="dropdown" href="#">Services</a>
+          <ul class="dropdown-menu">
+          <li><a href="#">Website Designing</a></li>
+          <li><a href="#">Website Development</a></li>
+          <li><a href="#">Content Writing</a></li>
+          <li><a href="#">PPC Services</a></li>
+          <li><a href="#">SMO</a></li>
+          <li><a href="#">SEO</a></li>
+        </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Help</a>
+        </li>
+        
+      </ul>
+      <!-- <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form> -->
+    </div>
+  </nav>
+<app-progress-bar></app-progress-bar>
+  <!-- <mat-toolbar class="example-toolbar">
+    <button id="nav-btn" mat-icon-button (click)="isExpanded =!isExpanded">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="toolbar-spacer"></span>
+    <a routerLink="/">{{title}}</a>
+    <span class="example-fill-remaining-space"></span>
+    <select class="btn btn-secondary" type="menu" toggle>
+        <option hidden>Themes</option>
+        <option value="dark" id="x">Dark</option>
+        <option value="white" id="y">Light</option>
+    </select>
+    <button id="nav-btn" mat-button [routerLink]="'/activities'"> About </button>
+    <button id="nav-btn" mat-button [routerLink]="'/create-activity'"> Settings </button>
+
+    <button id="nav-btn" mat-button [routerLink]="'/contacts'"> Help </button>
+   
+  </mat-toolbar> -->
+
+
+  <!-- ......................... -->
+
+  
+
+  <mat-sidenav-container class="example-container" autosize  >
+    <!-- <button id="nav-btn" mat-icon-button (click)="isExpanded =!isExpanded">
+      <mat-icon>menu</mat-icon>
+    </button> -->
+    <mat-sidenav #sidenav class="example-sidenav"  mode="side"   opened="true">
+      <mat-nav-list class="sticky-top">
+
+        <mat-list-item routerLink="/" title="Dashboard">
+          <span id="sidenav-text" class="full-width" *ngIf="isExpanded || isShowing">Dashboard</span>
+          <mat-icon mat-list-icon>home</mat-icon>
+        </mat-list-item>
+        <mat-list-item routerLink="/panel" title="Panelist">
+          <span id="sidenav-text" class="full-width" *ngIf="isExpanded || isShowing">Panelist Homepage</span>
+          <mat-icon mat-list-icon>group</mat-icon>
+        </mat-list-item>
+
+       
+        <mat-list-item routerLink="/grid" title="Candidate List">
+          <span id="sidenav-text" class="full-width" *ngIf="isExpanded || isShowing">Candidate List</span>
+          <mat-icon mat-list-icon>list</mat-icon>
+        </mat-list-item>
+
+        <mat-list-item routerLink="/search" title="Search">
+          <span id="sidenav-text" class="full-width" *ngIf="isExpanded || isShowing">Search</span>
+          <mat-icon mat-list-icon>search</mat-icon>
+        </mat-list-item>
+
+     
+
+        
+        
+        <mat-list-item routerLink="#" title="Email">
+          <span id="sidenav-text" class="full-width" *ngIf="isExpanded || isShowing">Email Section</span>
+          <mat-icon mat-list-icon>mail</mat-icon>
+        </mat-list-item>
+        <mat-list-item routerLink="/modal" title="openmodal">
+          <span id="sidenav-text" class="full-width" *ngIf="isExpanded || isShowing">Open Modal</span>
+          <mat-icon mat-list-icon>search</mat-icon>
+        </mat-list-item>
+
+        <mat-list-item class="parent" (click)="showSubmenu = !showSubmenu" (click)="isExpanded =true">
+          <span id="sidenav-text" class="full-width" *ngIf="isExpanded || isShowing" >Contact Teams</span>
+          <mat-icon mat-list-icon >phone</mat-icon>
+          <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}" *ngIf="isExpanded || isShowing" >
+            expand_more</mat-icon>
+        </mat-list-item>
+            <div  class="submenu" id="sidenav-text" [ngClass]="{'expanded' : showSubmenu}" *ngIf="isShowing || isExpanded">
+                <a mat-list-item routerLink="/">Via Skype</a>
+            </div>
+            <div class="submenu" id="sidenav-text" [ngClass]="{'expanded' : showSubmenu}" *ngIf="isShowing || isExpanded">
+              <a mat-list-item routerLink="/">Via Email</a>
+          </div>
+          <div class="submenu" id="sidenav-text" [ngClass]="{'expanded' : showSubmenu}" *ngIf="isShowing || isExpanded">
+            <a mat-list-item routerLink="/">Via Telephone</a>
+        </div>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <div class="mat-drawer-content"  (click)="isExpanded =false" (click)="showSubSubMenu = false"
+    (click)="showSubmenu = false">
+      <router-outlet ></router-outlet>   
+  </div>
+
+  </mat-sidenav-container>
+
+</body>
+</html>

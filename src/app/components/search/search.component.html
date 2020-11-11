@@ -1,0 +1,58 @@
+<form novalidate [formGroup]="form">
+    <h2>Category Filter</h2>
+   
+    <div class="row">
+        <div class="y">
+            <label> GPGID :</label>  
+            <input type="text" formControlName="GPGID" class="form-control" placeholder="GPGID" />
+        </div>
+        <div class="y">  
+            <label>First Name :</label>  
+            <input type="text" formControlName="firstName" class="form-control" placeholder="First Name" />
+        </div>
+        <!-- <div class="y">
+            <input type="date" formControlName="date" class="form-control" placeholder="Interview Date" />
+        </div> -->
+        
+        <div class="y">
+            <label>Skill :</label>  
+            <input type="text" formControlName="jobTitle" class="form-control" placeholder="Skill" />
+        </div>
+        <div class="y">
+            <label>Status :</label>  
+            <input type="text" formControlName="status" class="form-control" placeholder="Status" />
+        </div>
+        <br>
+        <div class="y">
+            <label>Interview Level :</label>  
+            <input type="text" formControlName="level" class="form-control" placeholder="Interview Level" />
+        </div>
+        <div class="y">
+            <label>Location :</label>  
+            <input type="text" formControlName="location" class="form-control" placeholder="Location" />
+        </div>
+
+    
+        <!-- <div class="col-sm-3 col-sm-1">
+            <select ngDefaultControl class="form-control form-control-lg" formControlName="level">
+                <option value="" hidden>Interview Level</option>
+                <option value="">__</option>
+                <option [ngValue]="level" *ngFor="let level of levels">{{level}}</option>
+            </select>
+        </div>
+         -->
+        <!-- <div class="col-md-3 col-sm-1">
+            <select ngDefaultControl class="form-control form-control-lg" formControlName="location">
+                <option value="" hidden>Location</option>
+                <option value="">__</option>
+                <option [ngValue]="location" *ngFor="let level of location">{{level}}</option>
+            </select>
+        </div>  -->
+      
+        <div class="y">
+           
+            <!-- <button class="btn btn-danger float-right" (click)="search(form.reset())">Reset</button>  -->
+            
+            <button class="btn btn-secondary" routerLink="result" (click)="search(form.value)">  <i class="fa fa-search"></i></button>
+        </div>
+    </div>

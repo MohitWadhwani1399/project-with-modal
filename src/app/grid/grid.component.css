@@ -1,0 +1,61 @@
+.siteContainer .container{
+    background-color:whitesmoke;
+    
+}
+.content .container {
+     
+     border: .0625rem solid #86BC25 ;
+    background-color:whitesmoke;
+}
+
+.table{
+    table-layout:auto;
+    width:100%;
+    height: auto;
+    background-color:whitesmoke;
+    color:black;
+    position: relative;
+}
+
+.table .container{
+    color:whitesmoke;
+    font-family: Open Sans,sans-serif;
+    font-size: .9375rem;
+    font-weight: 200;
+    line-height: 1.0rem;
+    /* margin-bottom: 1.875r; */
+
+    
+}
+input{
+    width: 90px;
+    /* border-color:edf1f7;
+    border-radius: 0.3rem; */
+}
+thead{
+    position: relative;
+    height: 0.5rem;
+    
+}
+
+.btn.adduser{
+    margin: 10px;
+}
+.btn.revoke{
+    margin: 10px;
+}
+.btn.showaddinput{
+    margin:10px;
+}
+table .table{
+    table-layout: auto;
+    width: 0%;
+}
+/* svg{
+    width: 1.5em;
+    height: 1.5em;
+} */
+h2{
+    text-align: center;
+    padding-bottom: .3rem;
+}

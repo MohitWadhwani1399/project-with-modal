@@ -1,0 +1,26 @@
+<p>user-list works!</p>
+<table class="table table-responsive">
+    <tr>
+    <th>GPGID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Interview Level</th>
+    <th>Skill/Field Of Application</th>
+    <th>Status</th>
+    <th>Interview Date</th>
+    <th>Location</th>
+    </tr>
+    <tbody>
+    <tr *ngFor="let user of filteredUsers | filter: searchByKeyword: 'name'">
+    
+    <td>{{ user.GPGID}}</td>
+    <td>{{ user.firstName}}</td>
+    <td>{{ user.lastName}}</td>
+    <td>{{ user.level}}</td>
+    <td>{{ user.jobTitle}}</td>
+    <td>{{ user.status}}</td>
+    <td>{{ user.date}}</td>
+    <td>{{ user.location}}</td>
+    </tr>
+    </tbody>
+    </table>

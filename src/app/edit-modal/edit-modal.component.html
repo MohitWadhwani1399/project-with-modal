@@ -1,0 +1,43 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Edit Candidate Detail</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="form-group">
+                <label for="FirstName">First Name</label>
+                <input type="text" name="FirstName" class="form-control" placeholder="First Name" [(ngModel)]="userInfo[0].FirstName" #FirstName (keyup)="filter(FirstName.value,FirstName.name)">
+              </div>
+              <div class="form-group">
+                <label for="LastName">Last Name</label>
+                <input type="text" name="FirstName" class="form-control" placeholder="Last Name"  [(ngModel)]="userInfo[0].LastName" #LastName (keyup)="filter(LastName.value,LastName.name)">
+              </div>
+              <div class="form-group">
+                <label for="Username">User Name</label>
+                <input type="text" class="form-control" name="Username" placeholder="Username" [(ngModel)]="userInfo[0].Username" #Username (keyup)="filter(Username.value,Username.name)">
+              </div>
+            <div class="form-group">
+              <label for="Email">Email address</label>
+              <input type="text" name="Email" class="form-control" placeholder="Email" [(ngModel)]="userInfo[0].email" #email (keyup)="filter(email.value,email.name)">
+             </div>
+             <div class="form-group">
+                <label for="Email">Age</label>
+                <input type="text" name="Age" class="form-control" placeholder="Age" [(ngModel)]="userInfo[0].age" #age (keyup)="filter(age.value,age.name)">
+               </div>
+               <div class="form-group">
+                <label for="Panelist">Select Panelist</label>
+                <app-people-picker></app-people-picker>
+               </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+    </div>
+    
+  </ng-template>
+  <button class="btn btn-outline-primary mb-2 mr-2" (click)="openVerticallyCentered(content)">Open Modal</button>
+  
+            
+            
+            

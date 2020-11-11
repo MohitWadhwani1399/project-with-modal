@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@600&display=swap');
+
+* {
+    box-sizing: border-box;   
+  }
+  
+  /* Float four columns side by side */
+  .column {
+    float: left;
+    width: 50%;
+    padding: 0 10px;
+    
+  }
+  .account_outer_div{
+    background-color: #282828;
+    height:100%;
+    overflow: visible;
+    width:100%;
+  }
+  /* Remove extra left and right margins, due to padding */
+  .row {
+      margin: 0 -5px;
+      padding: 3vh;
+    }
+
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Responsive columns */
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+  
+  /* Style the counter cards */
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    /* padding: 16px; */
+    text-align: center;
+    background-color: #484848;
+    border-radius: 10px;
+    
+  }
+
+  .card-columns{
+      font-size: 1.5vw;
+      font-weight: 700;
+      letter-spacing: 0.1vh;
+      font-family: Archivo;
+  }
+
+  .card-body{
+      font-size: 3vh;
+      font-weight: 300;
+  }
+
+  .container{
+    /* padding: 2vh; */
+    display: flex;
+    
+}
+
+.graph{
+    width: 100%;
+    float: left;
+    margin: 2vh;
+}
+
+.btn{
+    font-size: small;
+    color: gray;
+    float: right;
+    margin-top: 1vh;
+}
+
+.dropdown-menu{
+    font-size: small;
+    color: gray; 
+    cursor: pointer;  
+}
+
+h3,h2{
+    /* width: 50%; */
+    padding-top: 2vh;
+    /* display: flex; */
+    float: left;
+    color: #E0E0E0;
+    font-size: 2.8vh;
+    font-weight: 450;
+}
+
+.w-20 {
+    margin: 1vh;
+    background-color: #282828;
+    color: #E0E0E0; 
+    /* background-image: linear-gradient(black, gray); */
+    /* background: linear-gradient(to bottom, #575757 49%, #282828 100%); */
+  }
+
+  hr{
+      background-color: #484848;
+  }

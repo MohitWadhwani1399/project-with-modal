@@ -1,0 +1,87 @@
+
+<div class="account_outer_div">
+    <div class="row">
+        <div class="column" style="width: 100%;">
+            <div class="card" style="padding-right: 4vh">
+                <div class="barGraph" style="padding: 0.2vh;">
+                    <div class="d-flex flex-wrap">
+                        <div class="card card-body w-20">                          
+                            Card 1<hr>120                         
+                        </div>
+                        <div class="card card-body w-20">
+                          Card 2<hr>120 
+                        </div>
+                        <div class="card card-body w-20">
+                          Card 3<hr>120 
+                        </div>
+                        <div class="card card-body w-20">
+                          Card 4<hr>120 
+                        </div>
+                        <div class="card card-body w-20">
+                          Card 5<hr>120 
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+<div class="row">
+    <div class="column">
+        <div class="card">
+            <div class="container">
+                <div class="graph">
+                    <h3>Profile Results</h3>
+                    <div class="dropdown">
+                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Choose
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" (click)="Click1()">Series A</a>
+                        <a class="dropdown-item" (click)="Click2()">Series B</a>
+                        <a class="dropdown-item" (click)="Click3()">Series C</a>
+                        <a class="dropdown-item" (click)="Click4()">Series D</a>
+                        <a class="dropdown-item" (click)="Click5()">Series E</a>
+                    </div>
+                </div>
+                <canvas baseChart
+                  [datasets]="doughnutChartData"
+                  [labels]="doughnutChartLabels"
+                  [chartType]="doughnutChartType"
+                  [colors]="doughnutChartColors"
+                  [options]="doughnutChartOptions" >
+                </canvas>
+            </div> 
+        </div>
+    </div>
+</div>
+  
+    <div class="column">
+      <div class="card">
+        <div class="container">
+            <div class="graph">
+                <h3>Channel Results</h3>
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Choose
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" (click)="onClick1()">Series A</a>
+                      <a class="dropdown-item" (click)="onClick2()">Series B</a>
+                      <a class="dropdown-item" (click)="onClick3()">Series C</a>
+                      <a class="dropdown-item" (click)="onClick4()">Series D</a>
+                      <a class="dropdown-item" (click)="onClick5()">Series E</a>
+                    </div>
+                </div>
+              <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [colors]="barChartColors"
+                [legend]="barChartLegend" [chartType]="barChartType"></canvas>  
+                <!-- (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"    -->
+            </div>         
+        </div>
+    </div>
+</div>
+    
+</div>
+</div>
