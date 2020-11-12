@@ -37,6 +37,7 @@ import { ChartType } from 'chart.js';
 import { PeoplePickerComponent } from './people-picker/people-picker.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { EditModalComponent } from './edit-modal/edit-modal.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -63,7 +64,8 @@ import { EditModalComponent } from './edit-modal/edit-modal.component';
     ChartsModule,
     NgbModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
     // ,ChartType,Label,MultiDataSet
   ],
   providers: [UserProfileService,CandidatesService],

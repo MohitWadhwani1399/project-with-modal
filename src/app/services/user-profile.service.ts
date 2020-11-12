@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 
@@ -6,7 +7,11 @@ import { Injectable } from '@angular/core';
 })
 export class UserProfileService {
   user:any;
-  constructor() {
+  constructor(http:HttpClient) {
+    // http.get('url')
+    // .subscribe(res=>{
+    //   this.user = res;
+    // })
     this.user = [
       {
         Id:1,

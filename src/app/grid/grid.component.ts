@@ -61,6 +61,9 @@ export class GridComponent implements OnInit {
     this.userInfo.unshift(user)
   }
   filter(param,name){
+      //console.log(typeof param);
+      let param1 = param.toUpperCase()
+      let param2 = param.toLowerCase()
       if(!param)
       this.userInfo = this.tempuser;
       else{
@@ -76,7 +79,7 @@ export class GridComponent implements OnInit {
         case "FirstName":
           let user1 = this.userInfo.filter(
             function(user){
-             return user.FirstName.includes(param)
+             return (user.FirstName.includes(param1) || user.FirstName.includes(param2))
             })
             if(user1.length==0) 
               this.ndf=true;
@@ -85,7 +88,7 @@ export class GridComponent implements OnInit {
         case "LastName":
           let user2 = this.userInfo.filter(
             function(user){
-             return user.LastName.includes(param)
+             return (user.LastName.includes(param1) || user.LastName.includes(param2))
             })
             if(user2.length==0) 
               this.ndf=true;
@@ -94,7 +97,7 @@ export class GridComponent implements OnInit {
         case "Username":
           let user3 = this.userInfo.filter(
             function(user){
-             return user.Username.includes(param)
+             return (user.Username.includes(param1) || user.Username.includes(param2))
             })
             if(user3.length==0) 
               this.ndf=true;
@@ -103,7 +106,7 @@ export class GridComponent implements OnInit {
         case "Email":
           let user4 = this.userInfo.filter(
             function(user){
-             return user.email.includes(param)
+             return (user.email.includes(param1) || user.email.includes(param2))
             })
             if(user4.length==0) 
               this.ndf=true;
