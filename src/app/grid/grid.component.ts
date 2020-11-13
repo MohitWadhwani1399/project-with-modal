@@ -34,12 +34,6 @@ export class GridComponent implements OnInit {
       backdrop:'static',
       backdropClass:'customBackdrop'
     }
-    // this.editProfileForm = this.fb.group({
-    //   firstname: [''],
-    //   lastname: [''],
-    //   username: [''],
-    //   email: ['']
-    //  });
     this.userInfo = this.userService.provideUser(); 
     this.tempuser = this.userInfo;
   }
@@ -68,54 +62,55 @@ export class GridComponent implements OnInit {
       this.userInfo = this.tempuser;
       else{
       switch(name){
-        case "ID":
+        case "GPGID":
           let user = this.userInfo.filter(
             function(user){
-             return user.Id===parseInt(param)})
+             return (user.gpgid.includes(param1) || user.gpgid.includes(param2))
+            })
              if(user.length==0) 
               this.ndf=true;
               this.userInfo = user
             break;
-        case "FirstName":
+        case "Name":
           let user1 = this.userInfo.filter(
             function(user){
-             return (user.FirstName.includes(param1) || user.FirstName.includes(param2))
+             return (user.candidateName.includes(param1) || user.candidateName.includes(param2))
             })
             if(user1.length==0) 
               this.ndf=true;
             this.userInfo = user1
             break;
-        case "LastName":
+        case "Team":
           let user2 = this.userInfo.filter(
             function(user){
-             return (user.LastName.includes(param1) || user.LastName.includes(param2))
+             return (user.team.includes(param1) || user.team.includes(param2))
             })
             if(user2.length==0) 
               this.ndf=true;
             this.userInfo = user2
             break;
-        case "Username":
+        case "Skills":
           let user3 = this.userInfo.filter(
             function(user){
-             return (user.Username.includes(param1) || user.Username.includes(param2))
+             return (user.skills.includes(param1) || user.skills.includes(param2))
             })
             if(user3.length==0) 
               this.ndf=true;
             this.userInfo = user3
             break;
-        case "Email":
+        case "Designation":
           let user4 = this.userInfo.filter(
             function(user){
-             return (user.email.includes(param1) || user.email.includes(param2))
+             return (user.designation.includes(param1) || user.designation.includes(param2))
             })
             if(user4.length==0) 
               this.ndf=true;
             this.userInfo = user4
             break;
-        case "Age":
+        case "Status":
           let user5 = this.userInfo.filter(
             function(user){
-             return user.age===parseInt(param)
+              return (user.status.includes(param1) || user.status.includes(param2))
             })
             if(user5.length==0) 
               this.ndf=true;
@@ -128,18 +123,18 @@ export class GridComponent implements OnInit {
     var flag = confirm("Are you sure you want to delete?")
     if(flag){
       //this.userInfo.reduce(user)
-      let user = this.userInfo.filter((user)=> user.Id!==parseInt(Id))
+      let user = this.userInfo.filter((user)=> user.lookupCandidateId!==parseInt(Id))
       this.userInfo = user;
     }
   }
   edituser(user){
-    console.log(user);
-    this.userInfo.forEach(User=>{
-      if(User.Id==user.Id){
-        let index = this.userInfo.indexOf(User)
-        this.userInfo[index] = user
-      }
-    })
+    console.log("user");
+    // this.userInfo.forEach(User=>{
+    //   if(User.lookupCandidateId==user.lookupCandidateId){
+    //     let index = this.userInfo.indexOf(User)
+    //     this.userInfo[index] = user
+    //   }
+    // })
     console.log(this.userInfo);
     this.modalService.dismissAll()
   }
