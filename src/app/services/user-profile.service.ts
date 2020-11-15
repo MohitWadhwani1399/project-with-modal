@@ -14,9 +14,11 @@ export class UserProfileService {
       console.log(this.user);
       
     })
+    
    }
 
    provideUser(){
      return this.user;
    }
+   
 }

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component,  OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgbModal,NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
@@ -22,12 +23,12 @@ export class GridComponent implements OnInit {
     id:-1,
     flag:true
   };
-  userInfo = [];
+  userInfo:any;
   tempuser =[];
   tuser:any;
   modalOptions:NgbModalOptions;
   editProfileForm: FormGroup;
-  constructor(private modalService: NgbModal,private userService:UserProfileService){}
+  constructor(private http:HttpClient,private modalService: NgbModal,private userService:UserProfileService){}
 
   ngOnInit(): void {
     this.modalOptions = {
@@ -119,12 +120,18 @@ export class GridComponent implements OnInit {
       }
     }
   }
-  deleteuser(Id){
+  deleteuser(id){
+    console.log(typeof id);
+    
     var flag = confirm("Are you sure you want to delete?")
     if(flag){
-      //this.userInfo.reduce(user)
-      let user = this.userInfo.filter((user)=> user.lookupCandidateId!==parseInt(Id))
-      this.userInfo = user;
+        this.http.delete('https://mp-webapp-dev.azurewebsites.net/api/HiringMaster/'+id)
+        .subscribe(res=>{
+          this.userInfo = res;
+          console.log(this.userInfo);
+          
+          return this.userInfo;
+        })
     }
   }
   edituser(user){
