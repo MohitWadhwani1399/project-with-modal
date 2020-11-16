@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component,  OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { NgbModal,NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal,NgbModalOptions, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 //import { UserProfileService } from '../user-profile.service';
 import { UserProfileService } from '../services/user-profile.service';
 
@@ -27,6 +27,7 @@ export class GridComponent implements OnInit {
   tempuser =[];
   tuser:any;
   modalOptions:NgbModalOptions;
+  modalRef: NgbModalRef;
   editProfileForm: FormGroup;
   constructor(private http:HttpClient,private modalService: NgbModal,private userService:UserProfileService){}
 
@@ -38,12 +39,14 @@ export class GridComponent implements OnInit {
     this.userInfo = this.userService.provideUser(); 
     this.tempuser = this.userInfo;
   }
-  openModal(content,user,i) {
+  openModal(content,user:any,i:any) {
     this.tuser = user
     this.index = i
-    //console.log("Open Model",user,i);  
-    const modalRef = this.modalService.open(content,{centered:true});
-    //modalRef.componentInstance.name = 'World';
+    console.log("Open Model",user,i);  
+    this.modalRef = this.modalService.open(content,{centered:true});
+    //this.modalRef.componentInstance.user = user;
+    //console.log();
+    
   }
   Showadduserinput(event){
     this.InputUser = true;
